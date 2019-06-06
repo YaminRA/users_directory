@@ -1,0 +1,66 @@
+<div class="card">
+    <div class="card-header">
+      <h3>Create new user</h3>
+    </div>
+    <div class="card-body">
+      <form autocomplete="off" [formGroup]="userForm" (ngSubmit)="onSubmit()">
+        <div class="row">
+          <div class="col">
+            <div class="form-group">
+              <input [class.is-invalid]="firstNameControl.invalid && firstNameControl.touched" type="text"
+                class="form-control" formControlName="firstName" placeholder="First name">
+              <div *ngIf="firstNameControl.invalid && firstNameControl.touched">
+                <small *ngIf="firstNameControl.errors['required']" class="text-danger">First name is required</small>
+                <small *ngIf="firstNameControl.errors['pattern']" class="text-danger">First name can only contain
+                  alphabetic characters</small>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="form-group">
+              <input [class.is-invalid]="lastNameControl.invalid && lastNameControl.touched" type="text"
+                class="form-control" formControlName="lastName" placeholder="Last name">
+              <div *ngIf="lastNameControl.invalid && lastNameControl.touched">
+                <small *ngIf="lastNameControl.errors['required']" class="text-danger">Last name is required</small>
+                <small *ngIf="lastNameControl.errors['pattern']" class="text-danger">Last name can only contain alphabetic
+                  characters</small>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <input [class.is-invalid]="addressControl.invalid && addressControl.touched" type="text"
+            formControlName="address" class="form-control" placeholder="Address">
+          <div *ngIf="addressControl.invalid && addressControl.touched">
+            <small *ngIf="addressControl.errors['required']" class="text-danger">Address is required</small>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <div class="form-group">
+              <input [class.is-invalid]="emailControl.invalid && emailControl.touched" type="email" class="form-control"
+                formControlName="email" placeholder="Email">
+              <div *ngIf="emailControl.invalid && emailControl.touched">
+                <small *ngIf="emailControl.errors['required']" class="text-danger">Email is required</small>
+                <small *ngIf="emailControl.errors['email']" class="text-danger">Provide a valid email</small>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="form-group">
+              <input [class.is-invalid]="phoneControl.invalid && phoneControl.touched" type="tel" class="form-control"
+                formControlName="phone" placeholder="Phone">
+              <div *ngIf="phoneControl.invalid && phoneControl.touched">
+                <small *ngIf="phoneControl.errors['required']" class="text-danger">Phone is required</small>
+                <small *ngIf="phoneControl.errors['pattern']" class="text-danger">Phone can only contain digit
+                  characters</small>
+                <small *ngIf="phoneControl.errors['minLength'] || phoneControl.errors['maxLength']"
+                  class="text-danger">Phone must have 10 digits length</small>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button id="addUser" class="btn btn-primary" type="submit" [disabled]="userForm.invalid">Add user</button>
+      </form>
+    </div>
+  </div>
