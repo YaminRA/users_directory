@@ -9,13 +9,16 @@ import { UserListComponent } from './components/user-list/user-list.component';
 import { UserFormComponent } from './components/user-form/user-form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AgGridModule } from 'ag-grid-angular/main';
+import { UsersComponent } from './components/users/users.component';
+import { MaterialModule } from './material.module';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     UserListComponent,
-    UserFormComponent
+    UserFormComponent,
+    UsersComponent
   ],
   imports: [
     BrowserModule,
@@ -24,7 +27,11 @@ import { AgGridModule } from 'ag-grid-angular/main';
     AngularFirestoreModule,
     FormsModule,
     ReactiveFormsModule,
-    AgGridModule.withComponents([])
+    AgGridModule.withComponents([]),
+    MaterialModule
+  ],
+  entryComponents: [
+    UserFormComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,6 +1,6 @@
-<div class="card">
-    <div class="card-header">
-      <h3>Create new user</h3>
+  <div class="card">
+    <div class="card-header" style="color: darkslategray; padding-top: 1rem;">
+        <h3>Create new user</h3>
     </div>
     <div class="card-body">
       <form autocomplete="off" [formGroup]="userForm" (ngSubmit)="onSubmit()">
@@ -22,7 +22,8 @@
                 class="form-control" formControlName="lastName" placeholder="Last name">
               <div *ngIf="lastNameControl.invalid && lastNameControl.touched">
                 <small *ngIf="lastNameControl.errors['required']" class="text-danger">Last name is required</small>
-                <small *ngIf="lastNameControl.errors['pattern']" class="text-danger">Last name can only contain alphabetic
+                <small *ngIf="lastNameControl.errors['pattern']" class="text-danger">Last name can only contain
+                  alphabetic
                   characters</small>
               </div>
             </div>
@@ -60,7 +61,9 @@
             </div>
           </div>
         </div>
-        <button id="addUser" class="btn btn-primary" type="submit" [disabled]="userForm.invalid">Add user</button>
+        <div class="d-flex justify-content-around">
+          <button class="btn btn-danger col-md-5" type="button" (click)="onClose()">Cancel</button>
+          <button class="btn btn-primary col-md-5" type="submit" [disabled]="userForm.invalid">Add user</button>
+        </div>
       </form>
     </div>
-  </div>

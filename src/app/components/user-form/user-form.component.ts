@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { MatDialogRef } from '@angular/material';
 
 @Component({
   selector: 'app-user-form',
@@ -28,7 +29,7 @@ export class UserFormComponent implements OnInit {
     return this.userForm.get('phone');
   }
 
-  constructor(private formBuilder: FormBuilder, private firestore: AngularFirestore) {}
+  constructor(private formBuilder: FormBuilder, private firestore: AngularFirestore, public dialog: MatDialogRef<UserFormComponent>) {}
 
   userForm = this.formBuilder.group({
     firstName: ['', [Validators.required, Validators.pattern('^[a-zA-ZÀ-ÿ]+$')]],
@@ -49,7 +50,12 @@ export class UserFormComponent implements OnInit {
   onSubmit() {
     console.log(this.userForm.value);
     this.firestore.collection('users').add(this.userForm.value);
+    this.dialog.close();
     this.userForm.reset();
+  }
+
+  onClose() {
+    this.dialog.close();
   }
 
   ngOnInit() { }

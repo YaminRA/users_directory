@@ -1,0 +1,9 @@
+<div class="container description">
+  <p>As requested for the coding challenge, here I present a simple functional app developed with Angular 8, Firestore RealTime Database, Firebase Hosting for structure, while using both Bootstrap 4 and Angular Material for certain styling requirements.</p>
+  <p>This app retrieves the users information stored in the Firebase RealTime Database, to later populate a table that keeps data organiced and enables the user to filter and sort the records at will. To <strong>Sort</strong> the rows, just click on the <i>column header</i>, it will toggle between ascending to descending. To <strong>Filter</strong> the rows, just click on the <i>hamburguer menu</i> at the column header and the search menu will pop-up.</p>
+  <p>If you want to add a new user record, just click at the <strong>Add user</strong> button to display the form and proceed with filling the text inputs.</p>
+</div>
+<div style="margin-bottom: 15px;"><button id="addUser" type="button" class="btn btn-primary" (click)="openDialog()">Add user</button></div>
+<div class="container" style="padding: 15px 0px;">
+    <app-user-list></app-user-list>
+</div>

@@ -8,14 +8,14 @@ import { User } from 'src/app/models/user.model';
   styleUrls: ['./user-list.component.scss']
 })
 export class UserListComponent implements OnInit {
-  private gridApi;
-  private gridColumnApi;
-  private columnDefs;
-  private sortingOrders;
+  public gridApi;
+  public gridColumnApi;
+  public columnDefs;
+  public sortingOrders;
 
   userList: User[];
 
-  constructor(private getUsers: GetUsersService) {
+  constructor(public getUsers: GetUsersService) {
     this.columnDefs = [{
       headerName: 'First name',
       field: 'firstName',
@@ -63,7 +63,6 @@ export class UserListComponent implements OnInit {
     this.gridApi = params.api;
     this.gridColumnApi = params.columnApi;
     this.getUsers.getAllUsers().subscribe(users => {
-      console.log(users);
       params.api.setRowData(users);
     });
   }
