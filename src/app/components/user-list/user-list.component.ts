@@ -54,7 +54,7 @@ export class UserListComponent implements OnInit {
       width: 150,
       sortable: true,
       filter: true,
-      sortingOrder: ['asc', 'desc']
+      sortingOrder: ['asc', 'desc'],
     }
     ];
   }

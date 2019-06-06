@@ -11,6 +11,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AgGridModule } from 'ag-grid-angular/main';
 import { UsersComponent } from './components/users/users.component';
 import { MaterialModule } from './material.module';
+import { PhoneFormatPipe } from './utils/phone-format.pipe';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { MaterialModule } from './material.module';
     AppComponent,
     UserListComponent,
     UserFormComponent,
-    UsersComponent
+    UsersComponent,
+    PhoneFormatPipe
   ],
   imports: [
     BrowserModule,
