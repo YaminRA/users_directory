@@ -19,7 +19,7 @@ export class UserListComponent implements OnInit {
     this.columnDefs = [{
       headerName: 'First name',
       field: 'firstName',
-      width: 100,
+      width: 150,
       sortable: true,
       filter: true,
       sortingOrder: ['asc', 'desc']
@@ -27,7 +27,7 @@ export class UserListComponent implements OnInit {
     {
       headerName: 'Last name',
       field: 'lastName',
-      width: 100,
+      width: 150,
       sortable: true,
       filter: true,
       sortingOrder: ['asc', 'desc']
@@ -55,19 +55,30 @@ export class UserListComponent implements OnInit {
       sortable: true,
       filter: true,
       sortingOrder: ['asc', 'desc'],
+      valueFormatter: this.formatPhone
     }
     ];
   }
 
-  onGridReady(params) {
-    this.gridApi = params.api;
-    this.gridColumnApi = params.columnApi;
-    this.getUsers.getAllUsers().subscribe(users => {
-      params.api.setRowData(users);
-    });
+  formatPhone(phone: any) {
+    let formattedPhone = '(';
+    formattedPhone += phone.value.toString().slice(0, 3);
+    formattedPhone += ') ';
+    formattedPhone += phone.value.toString().slice(3, 6);
+    formattedPhone += '-';
+    formattedPhone += phone.value.toString().slice(5, 9);
+    return formattedPhone;
   }
 
-  ngOnInit() {
+onGridReady(params) {
+  this.gridApi = params.api;
+  this.gridColumnApi = params.columnApi;
+  this.getUsers.getAllUsers().subscribe(users => {
+    params.api.setRowData(users);
+  });
+}
 
-  }
+ngOnInit() {
+
+}
 }
